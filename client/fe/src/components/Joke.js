@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default ({ setup, punchline }) => {
+export default ({ joke: { setup, punchline } }) => {
   return (
     <div>
       <h3>{ setup }</h3>

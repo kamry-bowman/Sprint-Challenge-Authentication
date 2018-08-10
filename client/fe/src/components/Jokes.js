@@ -11,6 +11,7 @@ function getToken(history) {
   } else {
     return token;
   }
+  this.getJokes = this.getJokes.bind(this);
 }
 
 export default class Jokes extends Component {
@@ -20,12 +21,13 @@ export default class Jokes extends Component {
   }
 
   getJokes = () => {
+    const context = this;
     const token = getToken(this.props.history);
     axios
       .get('http://localhost:8000/api/jokes', { headers: { authorization: token } })
       .then(res => {
         const { data: jokes } = res;
-        this.setState(jokes);
+        context.setState({ jokes });
       })
       .catch(err => {
         console.log(err);
