@@ -23,7 +23,7 @@ export default class Login extends Component {
       .post('http://localhost:8000/api/login', { username, password })
       .then((response) => {
         window.localStorage.setItem('jwt', response.data);
-        history.push('/jokes');
+        history.push('/');
       })
       .catch((err) => {
         console.log(err);
